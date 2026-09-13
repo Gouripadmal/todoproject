@@ -1,12 +1,28 @@
 from django.shortcuts import render
 
-def greeting(request):
-    if request.GET:
-        username = request.GET.get('username')
+def employees(request):
 
-        return render(request, 'form-data.html', {
-            'username': username,
-            'formData': request.GET
-        })
+    employee_list = [
+        {
+            'name': 'John',
+            'job_title': 'Software Developer',
+            'salary': 50000,
+            'full_time': True
+        },
+        {
+            'name': 'Anu',
+            'job_title': 'UI Designer',
+            'salary': 40000,
+            'full_time': False
+        },
+        {
+            'name': 'Rahul',
+            'job_title': 'Project Manager',
+            'salary': 70000,
+            'full_time': True
+        }
+    ]
 
-    return render(request, 'index.html')
+    return render(request, 'employees.html', {
+        'employees': employee_list
+    })
