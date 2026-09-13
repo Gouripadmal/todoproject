@@ -1,13 +1,12 @@
 from django.shortcuts import render
 
 def greeting(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
+    if request.GET:
+        username = request.GET.get('username')
 
         return render(request, 'form-data.html', {
-            'formData': request.POST,
-            'email': email
+            'username': username,
+            'formData': request.GET
         })
 
     return render(request, 'index.html')
-

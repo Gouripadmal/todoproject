@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Form Data</title>
+    <title>Welcome</title>
 </head>
 <body>
 
-    <h2>{{ email }}</h2>
+    <h2>Welcome {{ username }},</h2>
 
-    <table>
-        {% for x,y in formData.items %}
+    <h3>Form Data Received:</h3>
+
+    <table border="1">
+        {% for x, y in formData.items %}
         <tr>
             <td>{{ x }}</td>
-            <td>:</td>
             <td>{{ y }}</td>
         </tr>
         {% endfor %}
