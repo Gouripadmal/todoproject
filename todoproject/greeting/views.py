@@ -7,7 +7,7 @@ def register(request):
 
         if form.is_valid():
             return render(request, 'form-data.html', {
-                'full_name': form.cleaned_data['full_name']
+                'email': form.cleaned_data['email']
             })
     else:
         form = RegistrationForm()
