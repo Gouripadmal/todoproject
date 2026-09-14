@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Username Form</title>
+    <title>Registration</title>
 </head>
 <body>
 
-    <h1>Enter Username</h1>
+    <h1>Registration</h1>
 
-    <form action="" method="GET">
-        <label>Username</label><br>
-        <input type="text" name="username"><br><br>
+    <form method="POST">
 
-        <input type="submit" value="Submit">
+        {% csrf_token %}
+
+        <label>Full Name</label><br>
+        <input type="text" name="full_name" value="{{ form.full_name.value|default:'' }}"><br>
+        {{ form.full_name.errors }}
+
+        <br>
+
+        <label>Email</label><br>
+        <input type="email" name="email" value="{{ form.email.value|default:'' }}"><br>
+        {{ form.email.errors }}
+
+        <br>
+
+        <label>Password</label><br>
+        <input type="password" name="password"><br>
+        {{ form.password.errors }}
+
+        <br>
+
+        <input type="submit" value="Register">
+
     </form>
 
 </body>

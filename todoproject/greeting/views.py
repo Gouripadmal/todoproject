@@ -1,28 +1,15 @@
 from django.shortcuts import render
+from .forms import RegistrationForm
 
-def employees(request):
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
 
-    employee_list = [
-        {
-            'name': 'John',
-            'job_title': 'Software Developer',
-            'salary': 50000,
-            'full_time': True
-        },
-        {
-            'name': 'Anu',
-            'job_title': 'UI Designer',
-            'salary': 40000,
-            'full_time': False
-        },
-        {
-            'name': 'Rahul',
-            'job_title': 'Project Manager',
-            'salary': 70000,
-            'full_time': True
-        }
-    ]
+        if form.is_valid():
+            return render(request, 'form-data.html', {
+                'full_name': form.cleaned_data['full_name']
+            })
+    else:
+        form = RegistrationForm()
 
-    return render(request, 'employees.html', {
-        'employees': employee_list
-    })
+    return render(request, 'index.html', {'form': form})
